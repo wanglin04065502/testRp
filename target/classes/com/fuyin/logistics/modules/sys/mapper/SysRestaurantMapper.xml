@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fuyin.logistics.modules.sys.dao.SysRestaurantMapper">
+	
+	<select id="listForPage" resultType="com.fuyin.logistics.modules.sys.entity.SysRestaurantEntity">
+		SELECT
+			`ID`, 
+			`NAME`, 
+			`DEPT`, 
+			`ADDR`, 
+			`TEL`, 
+			`MOBILE`, 
+			`STATE`, 
+			`INSTDATE`, 
+			`PAD1`, 
+			`PAD2`
+		FROM
+			sys_restaurant
+		ORDER BY
+			ID DESC
+	</select>
+	
+	<insert id="save">
+		INSERT INTO sys_restaurant (
+			`ID`, 
+			`NAME`, 
+			`DEPT`, 
+			`ADDR`, 
+			`TEL`, 
+			`MOBILE`, 
+			`STATE`, 
+			`INSTDATE`, 
+			`PAD1`, 
+			`PAD2`
+		)
+		VALUES (
+			#{id}, 
+			#{name}, 
+			#{dept}, 
+			#{addr}, 
+			#{tel}, 
+			#{mobile}, 
+			#{state}, 
+			#{instdate}, 
+			#{pad1}, 
+			#{pad2}
+		)
+	</insert>
+	
+	<select id="getObjectById" resultType="com.fuyin.logistics.modules.sys.entity.SysRestaurantEntity">
+		SELECT
+			`ID`, 
+			`NAME`, 
+			`DEPT`, 
+			`ADDR`, 
+			`TEL`, 
+			`MOBILE`, 
+			`STATE`, 
+			`INSTDATE`, 
+			`PAD1`, 
+			`PAD2`
+		FROM
+			sys_restaurant
+		WHERE
+			ID = #{id}
+	</select>
+	
+	<update id="update">
+		UPDATE sys_restaurant
+	 	<set>
+			<if test="name != null">`NAME` = #{name}, </if>
+			<if test="dept != null">`DEPT` = #{dept}, </if>
+			<if test="addr != null">`ADDR` = #{addr}, </if>
+			<if test="tel != null">`TEL` = #{tel}, </if>
+			<if test="mobile != null">`MOBILE` = #{mobile}, </if>
+			<if test="state != null">`STATE` = #{state}, </if>
+			<if test="instdate != null">`INSTDATE` = #{instdate}, </if>
+			<if test="pad1 != null">`PAD1` = #{pad1}, </if>
+			<if test="pad2 != null">`PAD2` = #{pad2}</if>
+		</set>
+		WHERE
+			ID = #{id}
+	</update>
+	
+	<delete id="batchRemove">
+		DELETE
+		FROM
+			sys_restaurant
+		WHERE
+			ID IN
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fuyin.logistics.modules.sys.dao.SysBranchMapper">
+
+    <select id="countBranchChildren" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			sys_branch
+		WHERE
+			dept = #{value}
+	</select>
+
+    <select id="listBranchByDept" resultType="com.fuyin.logistics.modules.sys.entity.SysBranchEntity">
+        SELECT
+        a.id,
+        a.name,
+        a.dept,
+        a.deptid,
+        a.level,
+        a.addr,
+        <if test="name == null">
+            (
+            SELECT
+            count(*)
+            FROM
+            sys_branch b
+            WHERE
+            b.dept = a.id
+            ) AS size,
+        </if>
+        a.tel
+        FROM
+        sys_branch a
+        <where>
+            <if test="dept != null">
+                AND a.dept = #{dept}
+            </if>
+            <if test="name != null and name.trim() != ''">
+                AND a.name LIKE concat('%',#{name},'%')
+            </if>
+        </where>
+        ORDER BY
+        a.dept,a.id ASC
+    </select>
+
+    <insert id="save">
+		INSERT INTO sys_branch (
+			id,
+			name,
+			dept,
+			deptid,
+			level,
+			addr,
+			tel
+		)
+		VALUES (
+			#{id},
+			#{name},
+			#{dept},
+			#{deptid},
+			#{level},
+			#{addr},
+			#{tel}
+		)
+	</insert>
+
+    <select id="getObjectById" resultType="com.fuyin.logistics.modules.sys.entity.SysBranchEntity">
+		SELECT
+			a.id,
+			a.name,
+			a.dept,
+			a.deptid,
+			a.level,
+			a.addr,
+			a.tel,
+			b.name deptname
+		FROM
+			sys_branch a LEFT JOIN sys_branch b on a.dept = b.id
+		WHERE
+			a.id = #{id}
+	</select>
+
+    <update id="update">
+        UPDATE sys_branch
+        <set>
+            <if test="name != null">name = #{name}, </if>
+            <if test="dept != null">dept = #{dept}, </if>
+            <if test="level != null">level = #{level}, </if>
+            <if test="addr != null">addr = #{addr}, </if>
+            <if test="tel != null">tel = #{tel}, </if>
+        </set>
+        WHERE
+        id = #{id}
+    </update>
+
+    <delete id="batchRemove">
+        DELETE
+        FROM
+        sys_branch
+        WHERE
+        id IN
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

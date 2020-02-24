@@ -1,0 +1,121 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.fuyin.logistics.common.support.properties.BeetlProperties",
+      "name": "beetl",
+      "type": "com.fuyin.logistics.common.support.properties.BeetlProperties"
+    },
+    {
+      "sourceType": "com.fuyin.logistics.common.support.properties.GlobalProperties",
+      "name": "global",
+      "type": "com.fuyin.logistics.common.support.properties.GlobalProperties"
+    },
+    {
+      "sourceType": "com.fuyin.logistics.common.support.properties.JwtProperties",
+      "name": "jwt",
+      "type": "com.fuyin.logistics.common.support.properties.JwtProperties"
+    },
+    {
+      "sourceType": "com.fuyin.logistics.common.support.orm.db.DynamicDataSourceConfig",
+      "name": "spring.datasource.druid.master-data-source",
+      "sourceMethod": "defaultDataSource()",
+      "type": "javax.sql.DataSource"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.fuyin.logistics.common.support.properties.BeetlProperties",
+      "name": "beetl.delimiter-statement-end",
+      "description": "定界结束符号",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.fuyin.logistics.common.support.properties.BeetlProperties",
+      "name": "beetl.delimiter-statement-start",
+      "description": "定界开始符号",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.fuyin.logistics.common.support.properties.BeetlProperties",
+      "name": "beetl.prefix",
+      "description": "视图解析器的路径前缀",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.fuyin.logistics.common.support.properties.BeetlProperties",
+      "name": "beetl.properties",
+      "type": "java.util.Properties"
+    },
+    {
+      "sourceType": "com.fuyin.logistics.common.support.properties.BeetlProperties",
+      "name": "beetl.resource-auto-check",
+      "description": "是否检测文件变化，开发使用true合适，生产使用false",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.fuyin.logistics.common.support.properties.BeetlProperties",
+      "name": "beetl.resource-tag-root",
+      "description": "自定义标签文件root目录",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.fuyin.logistics.common.support.properties.BeetlProperties",
+      "name": "beetl.resource-tag-suffix",
+      "description": "自定义标签文件后缀",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.fuyin.logistics.common.support.properties.GlobalProperties",
+      "name": "global.beetl-global-vars",
+      "type": "java.util.Map<java.lang.String,java.lang.Object>"
+    },
+    {
+      "sourceType": "com.fuyin.logistics.common.support.properties.GlobalProperties",
+      "defaultValue": false,
+      "name": "global.kaptcha-enable",
+      "description": "是否开启验证码",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "com.fuyin.logistics.common.support.properties.GlobalProperties",
+      "defaultValue": false,
+      "name": "global.redis-session-dao",
+      "description": "是否开启redis会话管理器",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "com.fuyin.logistics.common.support.properties.GlobalProperties",
+      "name": "global.upload-location",
+      "description": "文件上传目录",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.fuyin.logistics.common.support.properties.GlobalProperties",
+      "name": "global.upload-mapping",
+      "description": "文件上传目录访问路径",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.fuyin.logistics.common.support.properties.JwtProperties",
+      "defaultValue": 604800,
+      "name": "jwt.expiration",
+      "description": "过期时间：604800 s（单位：秒）",
+      "type": "java.lang.Long"
+    },
+    {
+      "sourceType": "com.fuyin.logistics.common.support.properties.JwtProperties",
+      "defaultValue": "randomKey",
+      "name": "jwt.md5-key",
+      "description": "md5加密混淆key",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.fuyin.logistics.common.support.properties.JwtProperties",
+      "defaultValue": "fuyin",
+      "name": "jwt.secret",
+      "description": "jwt密钥",
+      "type": "java.lang.String"
+    }
+  ]
+}

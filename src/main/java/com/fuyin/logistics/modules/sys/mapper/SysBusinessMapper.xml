@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fuyin.logistics.modules.sys.dao.SysBusinessMapper">
+
+    <select id="listForPage" resultType="com.fuyin.logistics.modules.sys.entity.SysBusinessEntity">
+		SELECT
+			`F_ID`,
+			`F_NAME`,
+			`F_DEPT`,
+			`F_ADDR`,
+			`F_TEL`,
+			`F_MOBILE`,
+			`F_STATE`,
+			`F_INSTDATE`
+		FROM
+			t_business
+		ORDER BY
+			F_ID DESC
+	</select>
+
+	<insert id="save">
+		INSERT INTO t_business (
+			`F_ID`,
+			`F_NAME`,
+			`F_DEPT`,
+			`F_ADDR`,
+			`F_TEL`,
+			`F_MOBILE`,
+			`F_STATE`,
+			`F_INSTDATE`
+		)
+		VALUES (
+			#{fId},
+			#{fName},
+			#{fDept},
+			#{fAddr},
+			#{fTel},
+			#{fMobile},
+			#{fState},
+			#{fInstdate}
+		)
+	</insert>
+
+	<select id="getObjectById" resultType="com.fuyin.logistics.modules.sys.entity.SysBusinessEntity">
+		SELECT
+			`F_ID`,
+			`F_NAME`,
+			`F_DEPT`,
+			`F_ADDR`,
+			`F_TEL`,
+			`F_MOBILE`,
+			`F_STATE`,
+			`F_INSTDATE`
+		FROM
+			t_business
+		WHERE
+			F_ID = #{fId}
+	</select>
+
+	<update id="update">
+		UPDATE t_business
+		<set>
+			<if test="fName != null">`F_NAME` = #{fName}, </if>
+			<if test="fDept != null">`F_DEPT` = #{fDept}, </if>
+			<if test="fAddr != null">`F_ADDR` = #{fAddr}, </if>
+			<if test="fTel != null">`F_TEL` = #{fTel}, </if>
+			<if test="fMobile != null">`F_MOBILE` = #{fMobile}, </if>
+			<if test="fState != null">`F_STATE` = #{fState}, </if>
+			<if test="fInstdate != null">`F_INSTDATE` = #{fInstdate}</if>
+		</set>
+		WHERE
+		F_ID = #{fId}
+	</update>
+
+	<delete id="batchRemove">
+		DELETE
+		FROM
+		t_business
+		WHERE
+		F_ID IN
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

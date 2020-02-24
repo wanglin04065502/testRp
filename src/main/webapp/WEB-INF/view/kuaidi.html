@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="UTF-8">
+    <title>测试</title>
+    <script type="text/javascript">
+    function check() {
+        var kdname=document.getElementById("kdname").value;
+        var name=document.getElementById("name").value;
+        var mobile=document.getElementById("mobile").value;
+        var url="/dzmd?kdname="+kdname+"&name="+name+"&mobile="+mobile;
+        window.open(url,"Map", '');
+    }
+    </script>
+
+</head>
+<body>
+<div>
+    <label>快递公司</label>
+    <select id="kdname" name="kdname" >
+        <option value="SF">顺丰</option>
+        <option value="STO">申通</option>
+        <option value="ZTO">中通</option>
+        <option value="YTO">圆通</option>
+        <option value="YD">韵达</option>
+    </select>
+</div>
+<div>
+    <label>收件人姓名</label>
+    <input type="text" id="name" name="name">
+</div>
+<div>
+    <label>收件人电话</label>
+    <input type="text" id="mobile" name="mobile">
+</div>
+<div>
+    <input type="button" name="cx" value="生成电子单" onclick="check()" />
+</div>
+</body>
+</html>

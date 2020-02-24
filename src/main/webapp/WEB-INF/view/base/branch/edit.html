@@ -1,0 +1,52 @@
+@layout("../../system/layout.html", {title: "编辑-机构信息"}){
+<table class="form" id="form">
+    <tr>
+        <td class="formTitle">机构编号<font face="宋体">*</font></td>
+        <td class="formValue">
+            <input type="text" class="form-control" placeholder="机构代码" v-model="branch.id" isvalid="yes"
+                   checkexpession="NotNull" readonly="readonly">
+        </td>
+    </tr>
+    <tr>
+        <td class="formTitle">机构名称<font face="宋体">*</font></td>
+        <td class="formValue">
+            <input type="text" class="form-control" placeholder="机构名称" v-model="branch.name" isvalid="yes"
+                   checkexpession="NotNull">
+        </td>
+    </tr>
+    <tr>
+        <td class="formTitle">上级机构<font face="宋体">*</font></td>
+        <td class="formValue">
+            <input type="text" class="form-control" placeholder="省级机构" v-model="branch.deptname" isvalid="yes"
+                   readonly="readonly">
+        </td>
+    </tr>
+    <tr>
+        <td class="formTitle">层级</td>
+        <td class="formValue">
+            <label class="radio-inline">
+                <input type="radio" name="level" value="3" v-model="branch.level"/> 地市
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="level" value="2" v-model="branch.level"/> 区县
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="level" value="1" v-model="branch.level"/> 街道
+            </label>
+        </td>
+    </tr>
+    <tr>
+        <td class="formTitle">地址<font face="宋体">*</font></td>
+        <td class="formValue">
+            <input type="text" class="form-control" placeholder="地址" v-model="branch.addr" isvalid="yes">
+        </td>
+    </tr>
+    <tr>
+        <td class="formTitle">电话<font face="宋体">*</font></td>
+        <td class="formValue">
+            <input type="text" class="form-control" placeholder="电话" v-model="branch.tel" isvalid="yes">
+        </td>
+    </tr>
+</table>
+<script src="${ctxPath}/static/js/base/branch/edit.js"></script>
+@}
